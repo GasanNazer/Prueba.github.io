@@ -11,10 +11,10 @@ public class main {
         em.getTransaction().begin();
         
         Employee employee = new Employee( ); 
-        employee.setEid( 1201 );
-        employee.setEname( "Gopal" );
+        employee.setEid( 4 );
+        employee.setEname( "veronika" );
         employee.setSalary( 40000 );
-        employee.setDeg( "Technical Manager" );
+        employee.setDeg( "The grand lord" );
         
         em.persist( employee );
         em.getTransaction( ).commit( );

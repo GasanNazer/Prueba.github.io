@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Employee {
+public class Employee{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +18,13 @@ public class Employee {
 	public Employee(int eid, String ename, double salary, String deg) {
 		super();
 		this.eid = eid;
+		this.ename = ename;
+		this.salary = salary;
+		this.deg = deg;
+	}
+	
+	public Employee(String ename, double salary, String deg) {
+		super();
 		this.ename = ename;
 		this.salary = salary;
 		this.deg = deg;
