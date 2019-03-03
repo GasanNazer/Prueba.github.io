@@ -8,12 +8,12 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://hostabroad.database.windows.net:1433;database=proto"/> <!--?useSSL=false-->
+			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://hostabroadme.database.windows.net:1433;database=test;"/> <!--?useSSL=false-->
 		<!-- 35.187.180.161:3306/PROTOTIPO?useSSL=false -->
 					
-					<property name="javax.persistence.jdbc.user" value="Traveler(at)hostabroad"/>
+					<property name="javax.persistence.jdbc.user" value="rootME@hostabroadme"/>
 					
-					<property name="javax.persistence.jdbc.password" value="Traveler"/>
+					<property name="javax.persistence.jdbc.password" value="Hostabroad1234"/>
 					
 					<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
 
