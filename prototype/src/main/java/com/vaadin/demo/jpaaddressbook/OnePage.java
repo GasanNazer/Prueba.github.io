@@ -54,6 +54,7 @@ public class OnePage extends Window{
                String name = (String)text.getValue();
                System.out.println(name);
                createName(name);
+               text.setValue("");
             }
         });
 		
@@ -66,6 +67,8 @@ public class OnePage extends Window{
 		TextArea textA = new TextArea("Inserted names");
 		textA.setReadOnly(true);
 		textA.setVisible(true);
+		textA.setWidth("300px");
+		textA.setHeight("300px");
 		layout_4.addComponent(textA);
 		
 		Button but2 = new Button();
@@ -76,11 +79,10 @@ public class OnePage extends Window{
 		
 		but2.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
+				textA.setValue("");
 				List<Name> names = readAllNames();
 				for(Name st: names) {
-					String s = st.getName();
-					System.out.println(s);
-	               textA.setValue(s);
+	               textA.setValue(textA.getValue() + st.getName() + "\n");
 	            }}
         });
 		this.setContent(horizontalLayout_init);
@@ -108,7 +110,7 @@ public class OnePage extends Window{
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         
-        List<Name> ar = em.createNativeQuery("SELECT * FROM NAME").getResultList();
+        List<Name> ar = em.createNativeQuery("SELECT * FROM Name", Name.class).getResultList();
         
         em.close( );
         emf.close( );
