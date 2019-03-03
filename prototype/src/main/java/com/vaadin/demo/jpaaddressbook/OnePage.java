@@ -51,7 +51,7 @@ public class OnePage extends Window{
 		but.addClickListener(new ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-               String name = text.getValue();
+               String name = (String)text.getValue();
                System.out.println(name);
                createName(name);
             }
@@ -77,9 +77,11 @@ public class OnePage extends Window{
 		but2.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				List<Name> names = readAllNames();
-				for(Name st: names)
-	               textA.setValue(textA.getValue() + "/n" + st.getName());
-	            }
+				for(Name st: names) {
+					String s = st.getName();
+					System.out.println(s);
+	               textA.setValue(s);
+	            }}
         });
 		this.setContent(horizontalLayout_init);
 		this.setSizeFull();
