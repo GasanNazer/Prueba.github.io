@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.vaadin.demo.jpaaddressbook.domain.Name;
+import com.vaadin.flow.component.UI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -18,10 +19,13 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
+import de.steinwedel.messagebox.MessageBox;
+
 
 public class OnePage extends Window{
 	
 	TextArea textA;
+	Window main = this;
 
 	public OnePage() {
 		HorizontalLayout horizontalLayout_init = new HorizontalLayout();
@@ -51,9 +55,14 @@ public class OnePage extends Window{
 		but.addClickListener(new ClickListener() {
             @Override
             public void buttonClick(ClickEvent event) {
-               String name = (String)text.getValue();
+               String name = text.getValue();
+               
+               if(name.matches(".*\\d+.*"))
+            	   getUI().addWindow(new Notification("a","Name field should contains only letters."));
+               else
+            	   createName(name);
+               
                System.out.println(name);
-               createName(name);
                text.setValue("");
             }
         });
@@ -83,8 +92,11 @@ public class OnePage extends Window{
 				List<Name> names = readAllNames();
 				for(Name st: names) {
 	               textA.setValue(textA.getValue() + st.getName() + "\n");
-	            }}
+	            }
+			}
         });
+		this.setClosable(false);
+		this.setResizable(false);
 		this.setContent(horizontalLayout_init);
 		this.setSizeFull();
 	}
